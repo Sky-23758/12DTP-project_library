@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Details</title>
+</head>
+<body>
+    {% if book %}
+        <h1>{{ book.Title }}</h1>
+        <p><strong>Book ID :</strong> {{ book.BookID }}</p>
+        <p><strong>Author ID :</strong> {{ book.AuthorID }}</p>
+        <p><strong>ISBN :</strong> {{ book.ISBN }}</p>
+        <p><strong>Publisher :</strong> {{ book.Publisher }}</p>
+        <p><strong>Publish Date :</strong> {{ book.PublishDate }}</p>
+        <p><strong>BorrowDate and ReturnDate :</strong> {{ BorrowRecords.BorrowDate}} - {{BorrowRecords.ReturnDate}}</p>
+    {% else %}
+        <p>No book found for query: "{{ query }}"</p>
+    {% endif %}
+    <br>
+    <a href="{{ url_for('search') }}">Back to Search</a>
+</body>
+</html>
