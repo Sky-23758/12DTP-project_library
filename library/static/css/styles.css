@@ -1,0 +1,63 @@
+/* 设置页面的全局字体和背景颜色 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* 样式化标题 */
+h1 {
+    color: #333;
+}
+
+/* 设置表单容器的样式 */
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 样式化输入框 */
+input[type="text"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* 当输入框获得焦点时的样式 */
+input[type="text"]:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+/* 样式化提交按钮 */
+input[type="submit"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* 提交按钮的悬停效果 */
+input[type="submit"]:hover {
+    background-color: #45a049;
+}

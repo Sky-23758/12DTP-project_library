@@ -2,9 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="..\static\css\styles.css">
     <title>Book Details</title>
 </head>
 <body>
+    
     {% if book %}
         <h1>{{ book.Title }}</h1>
         <p><strong>Book ID :</strong> {{ book.BookID }}</p>
@@ -12,7 +14,8 @@
         <p><strong>ISBN :</strong> {{ book.ISBN }}</p>
         <p><strong>Publisher :</strong> {{ book.Publisher }}</p>
         <p><strong>Publish Date :</strong> {{ book.PublishDate }}</p>
-        <p><strong>BorrowDate and ReturnDate :</strong> {{ BorrowRecords.BorrowDate}} - {{BorrowRecords.ReturnDate}}</p>
+        <p><strong>BorrowDate to ReturnDate :</strong> {{ book.BorrowDate }} / {{ book.ReturnDate }}</p>
+        
     {% else %}
         <p>No book found for query: "{{ query }}"</p>
     {% endif %}

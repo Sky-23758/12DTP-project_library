@@ -8,22 +8,33 @@ def get_db_connection():
     conn.row_factory = sqlite3.Row 
     return conn
 
+
+
 @app.route('/')
 def home():
     return render_template('home.html', title='Home')
 
-@app.route('/search', methods=['GET', 'POST'])
+
+
+
+
+
+@app.route('/search', methods=['GET'])
 def search():
-    if request.method == 'POST':
-        search_query = request.form['query']
-        conn = get_db_connection()
-        if search_query.isdigit():
-            book = conn.execute("SELECT * FROM Books WHERE BookID = ?", (search_query,)).fetchone()
-        else:
-            book = conn.execute("SELECT * FROM Books WHERE Title LIKE ?", ('%' + search_query + '%',)).fetchone()
-        conn.close()
-        return render_template('book_details.html', book=book, query=search_query)
     return render_template('search.html', title='Search Books')
+
+
+@app.route('/search/result', methods=['POST'])
+def search_result():
+    search_query = request.form['query']
+    conn = get_db_connection()
+    if search_query.isdigit():
+        book = conn.execute("SELECT B.BookID,Title,AuthorID,ISBN,Publisher,PublishDate,BorrowDate,ReturnDate FROM Books B LEFT JOIN BorrowRecords R ON B.BookID=R.BookID WHERE B.BookID = ?", (search_query,)).fetchone()
+    else:
+        book = conn.execute("SELECT B.BookID,Title,AuthorID,ISBN,Publisher,PublishDate,BorrowDate,ReturnDate FROM Books B LEFT JOIN BorrowRecords R ON B.BookID=R.BookID WHERE Title LIKE ?", ('%' + search_query + '%',)).fetchone()
+    conn.close()
+    return render_template('book_details.html', book=book, query=search_query)
+
 
 
 
