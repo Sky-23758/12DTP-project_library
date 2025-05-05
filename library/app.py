@@ -29,9 +29,9 @@ def search_result():
     search_query = request.form['query']
     conn = get_db_connection()
     if search_query.isdigit():
-        book = conn.execute("SELECT B.BookID,Title,AuthorID,ISBN,Publisher,PublishDate,BorrowDate,ReturnDate FROM Books B LEFT JOIN BorrowRecords R ON B.BookID=R.BookID WHERE B.BookID = ?", (search_query,)).fetchone()
+        book = conn.execute("SELECT B.BookID,B.Title,B.AuthorID AS BookAuthorID,A.Name AS AuthorName,B.ISBN,B.Publisher,B.PublishDate,R.BorrowDate,R.ReturnDate,R.UserID,U.Name AS BorrowerName FROM Books B LEFT JOIN BorrowRecords R ON B.BookID=R.BookID JOIN Authors A ON B.AuthorID = A.AuthorID JOIN Users U ON R.UserID = U.UserID WHERE B.BookID = ?", (search_query,)).fetchone()
     else:
-        book = conn.execute("SELECT B.BookID,Title,AuthorID,ISBN,Publisher,PublishDate,BorrowDate,ReturnDate FROM Books B LEFT JOIN BorrowRecords R ON B.BookID=R.BookID WHERE Title LIKE ?", ('%' + search_query + '%',)).fetchone()
+        book = conn.execute("SELECT B.BookID,B.Title,B.AuthorID AS BookAuthorID,A.Name AS AuthorName,B.ISBN,B.Publisher,B.PublishDate,R.BorrowDate,R.ReturnDate,R.UserID,U.Name AS BorrowerName FROM Books B LEFT JOIN BorrowRecords R ON B.BookID=R.BookID JOIN Authors A ON B.AuthorID = A.AuthorID JOIN Users U ON R.UserID = U.UserID WHERE Title LIKE ?", ('%' + search_query + '%',)).fetchone()
     conn.close()
     return render_template('book_details.html', book=book, query=search_query)
 
