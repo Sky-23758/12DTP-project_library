@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="..\static\css\styles.css">
+    <link rel="stylesheet" type="text/css" href="div.css">
     <title>Book Details</title>
 </head>
 <body>
@@ -16,7 +16,10 @@
         <p><strong>Publish Date :</strong> {{ book.PublishDate }}</p>
         <p><strong>BorrowDate to ReturnDate :</strong> {{ book.BorrowDate }} / {{ book.ReturnDate }}</p>
         <p><strong>Borrower :</strong> {{ book.BorrowerName }} (ID: {{ book.UserID }})</p>
-        
+         
+        <img src="../static/images/{{ book.Title }}.jpg" alt="Book Picture" width="300">
+
+
     {% else %}
         <p>No book found for query: "{{ query }}"</p>
     {% endif %}
