@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+     <title>Borrow List</title>
+</head>
+
+<form action="{{ url_for('borrowList') }}" method="get" style="margin-bottom: 20px;">
+    <input type="text" name="search" value="{{ search_query }}" placeholder="Search by borrow id or book id ">
+    <input type="submit" value="Search">
+</form>
+
+{% if message %}
+    <p style="color: red;">{{ message }}</p>
+{% endif %}
+
+<table>
+    <thead>
+        <tr>
+            <th>Borrow ID</th>
+            <th>Book ID</th>
+            <th>Book Title</th>
+            <th>Book Category</th>
+            <th>Borrower ID</th>
+            <th>Borrower Email</th>
+            <th>Borrow Date</th>
+            <th>Return Date</th>
+            <th>Instructions</th>
+            <th>Last Edited Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for borrow in borrows %}
+        <tr>
+            <td>{{ borrow.id }}</td>
+            <td>{{ borrow.book_id }}</td>
+            <td>{{ borrow.book_title }}</td>
+            <td>{{ borrow.category }}</td>
+            <td>{{ borrow.borrower_id }}</td>
+            <td>{{ borrow.borrower_email }}</td>
+            <td>{{ borrow.borrow_date }}</td>
+            <td>{{ borrow.return_date}}</td>
+            <td>{{ borrow.instructions }}</td>
+            <td>{{ borrow.update_time }}</td>
+            <td>
+                
+                <a href="{{ url_for('edit_borrow', id=borrow.id) }}">Edit</a>
+                <form action="{{ url_for('delete_borrow', id=borrow.id) }}" method="post" style="display:inline;">
+                    
+                        <input type="submit" value="Delete" class="delete-button" onclick="return confirm('Are you sure you want to delete this book borrowing information?')">
+                    
+                </form>
+                
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
