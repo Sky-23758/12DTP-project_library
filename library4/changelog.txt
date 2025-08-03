@@ -1,0 +1,7 @@
+This version optimizes the borrower's borrowing check-in process, 
+specifies the borrowing time as the current date, and the return time as the borrowing date plus a specific time (such as 7 days or 14 days), 
+and adds a dedicated footer. 
+The next plan is to add a user authentication system to the website, 
+such as administrators and borrowers. 
+Administrators can use all website functions, 
+while borrowers can only borrow and search data and cannot modify the data.
