@@ -1,0 +1,5 @@
+This version of the online library is a branch of the third edition. 
+Most of the content is almost the same as the third edition, 
+but the two database tables used in the code are for more convenient data management. 
+However, after modification, it was found that the cost-effectiveness for this small website is not as high as the single website management of the third edition, 
+so this solution was abandoned.

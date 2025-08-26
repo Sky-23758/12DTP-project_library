@@ -1,0 +1,7 @@
+This version of the online library is an update to the previous one. 
+It uses some simple AI-generated CSS for simple decoration, 
+with a predominantly blue colour scheme. 
+I've also added a brief introduction to the "about" page. 
+Available features include: 1. Book borrowing form; 2. Data upload; 3. Querying, modifying, and deleting borrowing records. 
+Since modifying and deleting borrowing records shouldn't be accessible to ordinary users, 
+I may implement some restrictions in the future, such as adding administrators.

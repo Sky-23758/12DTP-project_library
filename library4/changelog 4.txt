@@ -5,3 +5,5 @@ The next plan is to add a user authentication system to the website,
 such as administrators and borrowers. 
 Administrators can use all website functions, 
 while borrowers can only borrow and search data and cannot modify the data.
+In terms of web page aesthetics, 
+in the future we may make certain modifications to the layout of the edit and delete buttons on the list page to improve the overall aesthetics.

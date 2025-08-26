@@ -1,0 +1,6 @@
+This version of the library website was modified by me based on my teacher's pizza subscription website. 
+Most of the content is similar to the pizza subscription website. 
+This version of the website does not use a lot of CSS for decoration. 
+There is no content in the about interface. 
+There are also some problems with the code of the borrow page. 
+Among them, the selection of borrowing time cannot be confirmed, which may need to be improved in the future.

@@ -1,0 +1,7 @@
+This version of the online library website is my first time programming, 
+so the content is relatively simple. 
+It only has one function to query the book content in the database. 
+This version adds some CSS for minor decoration, 
+and there are some book contents that can be queried in the database. 
+Since this is just an attempt and the content is too little, 
+I may re-make a new website with other templates in the future.

@@ -13,7 +13,7 @@ def get_db():
         db.row_factory = sqlite3.Row 
         c = db.cursor()
         
-        # Orders table
+        # Borrow table
         c.execute('''CREATE TABLE IF NOT EXISTS Borrows (
                   id             INTEGER PRIMARY KEY,
                   book_id        TEXT,
