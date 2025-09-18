@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+{% block content %}
+<head>
+    <title>Borrow Confirmed</title>
+</head>
+
+<body>
+<div class="confirmation-box">
+    <h1>Thank you, {{ username }} !</h1>
+    <p>Your borrowing list has been submitted successfully.</p>
+    <p>You can view or modify it in the <a href="{{ url_for('borrowList') }}">List</a>.</p>
+    
+    <ul>
+        <li><strong>Book Title:</strong> {{ request.form.get('book_title', 'N/A') }}</li>
+        <li><strong>Book ID:</strong> {{ request.form['book_id'] }}</li>
+        <li><strong>Book Category:</strong> {{ request.form['category'] }}</li>
+        <li><strong>Username:</strong>  {{ username }}</li>
+        <li><strong>Email:</strong> {{ email }}</li>
+        <li><strong>Borrow Date：</strong> {{ borrow_date }}</li>
+        <li><strong>Return Date：</strong> {{ return_date }}</li>
+        <li><strong>Instructions:</strong> {{ request.form['instructions'] or 'None' }}</li>
+    </ul>
+
+    <p style="text-align: center;">
+        <a class="button confirm-button" href="{{ url_for('borrow') }}">Place Another Order</a>
+    </p>
+</div>
+</body>
+{% endblock %}

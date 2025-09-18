@@ -1,0 +1,82 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="content">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Edit Borrow</title>
+    </head>
+
+    <h1>Edit Borrow</h1>
+    <form action="{{ url_for('update_borrow', id=borrow.id) }}" method="post">
+        <table class="form-table">
+            <tr>
+                <td><label for="book_title">Book Title:</label></td>
+                <td><input type="text" id="book_title" name="book_title" value="{{ borrow.book_title }}" required></td>
+            </tr>
+            <tr>
+                <td><label for="book_id">Book ID:</label></td>
+                <td><input type="text" id="book_id" name="book_id" value="{{ borrow.book_id }}" required></td>
+            </tr>
+            <tr>
+                <td><label for="category">Category:</label>
+                <td>
+                    <select id="category" name="category" required>
+                        <option value="Supreme" {% if borrow.category=='Supreme' %}selected{% endif %}>Supreme</option>
+                        <option value="Fiction" {% if borrow.category=='Fiction' %}selected{% endif %}>Fiction</option>
+                        <option value="Science Fiction" {% if borrow.category=='Science Fiction' %}selected{% endif %}>
+                            Science Fiction</option>
+                        <option value="Biography" {% if borrow.category=='Biography' %}selected{% endif %}>Biography
+                        </option>
+                        <option value="Computer Science" {% if borrow.category=='Computer Science' %}selected{% endif
+                            %}>
+                            Computer Science</option>
+                        <option value="Children" {% if borrow.category=='Children' %}selected{% endif %}>Children
+                        </option>
+                        <option value="History" {% if borrow.category=='History' %}selected{% endif %}>History</option>
+                        <option value="Psychology" {% if borrow.category=='Psychology' %}selected{% endif %}>Psychology
+                        </option>
+                        <option value="Art & Photography" {% if borrow.category=='Art & Photography' %}selected{% endif
+                            %}>
+                            Art & Photography</option>
+                        <option value="Health & Fitness" {% if borrow.category=='Health & Fitness' %}selected{% endif
+                            %}>
+                            Health & Fitness</option>
+                        <option value="Comics & Graphic Novels" {% if borrow.category=='Comics & Graphic Novels'
+                            %}selected{% endif %}>Comics & Graphic Novels</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="borrower_id">Username:</label></td>
+                <td>
+                    <p>{{ borrow.username|default('Not set') }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="borrower_email">Email:</label></td>
+                <td>
+                    <p>{{ borrow.email|default('Not set') }}</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td><label for="return_period">Borrow Period:</label></td>
+                <td>
+                    <label><input type="radio" name="return_period" value="7days" {% if return_date and borrow_date
+                            and(return_date - borrow_date).days==7 %} checked {% endif %} required> 7 Days</label>
+                    <label><input type="radio" name="return_period" value="14days" {% if return_date and borrow_date
+                            and(return_date - borrow_date).days==14 %} checked {% endif %}> 14 Days</label>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="instructions">Other Instructions:</label></td>
+                <td><textarea id="instructions" name="instructions" rows="4"
+                        cols="40">{{ borrow.instructions }}</textarea>
+                </td>
+            </tr>
+        </table>
+        <input type="submit" value="Update Borrow Info">
+    </form>
+</div>
+{% endblock %}

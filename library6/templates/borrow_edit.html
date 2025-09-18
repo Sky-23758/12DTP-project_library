@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <head>
+        <meta charset="UTF-8">
+        <title>Edit Borrow</title>
+    </head>
+
+    <h1>Edit Borrow</h1>
+    <form action="{{ url_for('update_borrow', id=borrow.id) }}" method="post">
+        <label for="book_id">Book ID:</label>
+        <input type="text" id="book_id" name="book_id" value="{{ borrow.book_id }}" required><br>
+        
+        <label for="book_title">Book Title:</label>
+        <input type="text" id="book_title" name="book_title" value="{{ borrow.book_title }}" required><br>
+        
+        <label for="category">Book Category:</label>
+    <select id="category" name="category" required>
+        <option value="Supreme" {% if borrow.category == 'Supreme' %}selected{% endif %}>Supreme</option>
+        <option value="Fiction" {% if borrow.category == 'Fiction' %}selected{% endif %}>Fiction</option>
+        <option value="Science Fiction" {% if borrow.category == 'Science Fiction' %}selected{% endif %}>Science Fiction</option>
+        <option value="Biography" {% if borrow.category == 'Biography' %}selected{% endif %}>Biography</option>
+        <option value="Computer Science" {% if borrow.category == 'Computer Science' %}selected{% endif %}>Computer Science</option>
+        <option value="Children" {% if borrow.category == 'Children' %}selected{% endif %}>Children</option>
+        <option value="History" {% if borrow.category == 'History' %}selected{% endif %}>History</option>
+        <option value="Psychology" {% if borrow.category == 'Psychology' %}selected{% endif %}>Psychology</option>
+        <option value="Art & Photography" {% if borrow.category == 'Art & Photography' %}selected{% endif %}>Art & Photography</option>
+        <option value="Health & Fitness" {% if borrow.category == 'Health & Fitness' %}selected{% endif %}>Health & Fitness</option>
+        <option value="Comics & Graphic Novels" {% if borrow.category == 'Comics & Graphic Novels' %}selected{% endif %}>Comics & Graphic Novels</option>
+    </select><br>
+
+    <label for="borrower_id">Borrower ID:</label>
+    <input type="text" id="borrower_id" name="borrower_id" value="{{ borrow.borrower_id }}" required><br>
+
+    <label for="borrower_email">Borrower Email:</label>
+    <input type="email" id="borrower_email" name="borrower_email" value="{{ borrow.borrower_email }}" required><br>
+
+    <label for="borrow_date">Borrow Date:</label>
+    <input type="date" id="borrow_date" name="borrow_date" value="{{ borrow.borrow_date }}" required><br>
+
+    <label for="return_date">Return Date:</label>
+    <input type="date" id="return_date" name="return_date" value="{{ borrow.return_date }}" required><br>
+
+    <label for="instructions">Other Instructions:</label><br>
+    <textarea id="instructions" name="instructions" rows="4" cols="40">{{ borrow.instructions }}</textarea><br><br>
+
+    <input type="submit" value="Update Borrow Info">
+</form>
+
+{% endblock %}

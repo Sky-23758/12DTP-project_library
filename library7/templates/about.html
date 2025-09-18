@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="content">
+    <h1>Recommended Books for Teens</h1>
+    <div class="book-gallery">
+        
+            <div class="book-item">
+                <img src="{{ url_for('static', filename='images/Just_Mercy.jpg') }}" alt="Book Picture" class="book-image">
+                <p class="book-title">Just Mercy</p>
+            </div>
+            <div class="book-item">
+                <img src="{{ url_for('static', filename='images/The_Hate_U_Give.jpg') }}" alt="Book Picture" class="book-image">
+                <p class="book-title">The Hate U Give</p>
+            </div>
+            <div class="book-item">
+                <img src="{{ url_for('static', filename='images/The_Hunger_Games.jpg') }}" alt="Book Picture" class="book-image">
+                <p class="book-title">The Hunger Games</p>
+            </div>
+            <div class="book-item">
+                <img src="{{ url_for('static', filename='images/Becoming.jpg') }}" alt="Book Picture" class="book-image">
+                <p class="book-title">Becoming</p>
+            </div>
+            <div class="book-item">
+                <img src="{{ url_for('static', filename='images/Python_Crash_Course.jpg') }}" alt="Book Picture" class="book-image">
+                <p class="book-title">Python Crash Course</p>
+            </div>
+        
+            <div class="book-item">
+                <img src="{{ url_for('static', filename='images/Harry_Potter_and_the_Sorcerer’s_Stone.jpg') }}" alt="Book Picture" class="book-image">
+                <p class="book-title">Harry Potter and the Sorcerer’s Stone</p>
+            </div>
+            <div class="book-item">
+                <img src="{{ url_for('static', filename='images/The_Diary_of_a_Young_Girl.jpg') }}" alt="Book Picture" class="book-image">
+                <p class="book-title">The Diary of a Young Girl</p>
+            </div>
+            <div class="book-item">
+                <img src="{{ url_for('static', filename='images/The_Teenage_Brain.jpg') }}" alt="Book Picture" class="book-image">
+                <p class="book-title">The Teenage Brain</p>
+            </div>
+            <div class="book-item">
+                <img src="{{ url_for('static', filename='images/Photography_The_Definitive_Visual_History.jpg') }}" alt="Book Picture" class="book-image">
+                <p class="book-title">Photography: The Definitive Visual History</p>
+            </div>
+            <div class="book-item">
+                <img src="{{ url_for('static', filename='images/The_Body_Book_for_Younger_Girls.jpg') }}" alt="Book Picture" class="book-image">
+                <p class="book-title">The Body Book for Younger Girls</p>
+            </div>
+        
+            <div class="book-item">
+                <img src="{{ url_for('static', filename='images/Dog_Man.jpg') }}" alt="Book Picture" class="book-image">
+                <p class="book-title">Dog Man</p>
+            </div>
+        
+    </div>
+</div>
+{% endblock %}

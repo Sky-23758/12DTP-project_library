@@ -1,0 +1,106 @@
+{% extends 'layout.html' %}
+{% block content %} 
+<head>
+    <title>Borrow Form</title>
+</head>
+
+<body>
+    <h1>Welcome to borrow books.</h1>
+    <form name= "bookForm" method= "POST">
+        <table>
+            
+            <tr>
+                <td colspan="2" style="text-align: center;"><strong>Book Information</strong></td>
+            </tr>
+
+            <tr>
+                <td><label for="book_id">Book ID:</label></td>
+                <td><input type="text" name="book_id" required minlength="3" maxlength="20"></td>
+            </tr>
+
+            <tr>
+                <td><label for="book_title">Book Title:</label></td>
+                <td><input type="text" name="book_title" minlength="3" ></td>
+            </tr>
+
+            <tr>
+                <td><label for="category">Book Category:</label></td>
+                <td>
+                    <select name="category" id="category" required>
+                        <option value="" disabled selected>Select a category</option>
+                        <option value="Supreme">Supreme</option>
+                        <option value="Fiction">Fiction</option>
+                        <option value="Science Fiction">Science Fiction</option>
+                        <option value="Biography">Biography</option>
+                        <option value="Computer Science">Computer Science</option>
+                        <option value="Children">Children</option>
+                        <option value="History">History</option>
+                        <option value="Psychology">Psychology</option>
+                        <option value="Art & Photography">Art & Photography</option>
+                        <option value="Health & Fitness">Health & Fitness</option>
+                        <option value="Comics & Graphic Novels">Comics & Graphic Novels</option>
+                    </select><br>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2" style="text-align: center;"><strong>Borrower Information</strong></td>
+            </tr>
+
+            <tr>
+                <td><label>Logged-in User ID:</label></td>
+                <td>
+                    {% if current_user.is_authenticated %}
+                        {{ current_user.id }}
+                    {% else %}
+                        <p>Please <a href="{{ url_for('login') }}">login</a> to borrow a book.</p>
+                    {% endif %}
+                </td>
+            </tr>
+
+            <tr>
+                <td><label>Real Name:</label></td>
+                <td>
+                    {% if current_user.is_authenticated %}
+                        {{ current_user.real_name|default('Not set') }}
+                    {% else %}
+                        <p>Please login to see your name.</p>
+                    {% endif %}
+                </td>
+            </tr>
+
+            <tr>
+                <td><label>Email:</label></td>
+                <td>
+                    {% if current_user.is_authenticated %}
+                        {{ current_user.email|default('Not set') }}
+                    {% else %}
+                        <p>Please login to see your email.</p>
+                    {% endif %}
+                </td>
+            </tr>
+
+            <tr>
+                <td><label for="return_period">Borrow Period:</label></td>
+                <td>
+                    <label><input type="radio" name="return_period" value="7days" required> 7 Days</label>
+                    <label><input type="radio" name="return_period" value="14days"> 14 Days</label>
+                </td>
+            </tr>
+           
+
+            <tr>
+                <td><label for="instructions">Instructions:</label></td>
+                <td><textarea name="instructions" rows="4" cols="40"></textarea></td>
+            </tr>
+            
+            
+            <tr>
+                <td colspan="2"><input type="submit" value="Submit"></td>
+            </tr>
+        
+        </table>
+    </form>
+</body>
+{% endblock %}

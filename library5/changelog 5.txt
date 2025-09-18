@@ -1,0 +1,11 @@
+This version adds a significant amount of new functionality to the online library website. 
+First, I added a new login system. Since regular visitors shouldn't have the ability to modify or delete borrowed items, 
+I restructured the original separate borrow list page into a guest and administrator version. 
+The guest version retains only basic query functionality, 
+while the administrator version grants access to modify, edit, and delete borrowed items. 
+Login is handled by newly added login and logout screens. 
+The basic login username is "admin" and the password is "admin123." 
+To implement this login functionality, I used flask login, which led to significant changes to the underlying backend code. 
+I moved database generation to config.py, added login code to auth.py, and added login and logout code to main.py. 
+Future plans include adding library book data, images, and descriptions to the about.html page to facilitate borrowing by book ID. 
+Since the previous CSS is insufficient to support the new features, I may also update and update the overall CSS.

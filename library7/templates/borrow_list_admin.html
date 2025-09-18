@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="content">
+<head>
+    <meta charset="UTF-8">
+     <title>Borrow List</title>
+</head>
+
+<form action="{{ url_for('borrowList') }}" method="get" style="margin-bottom: 20px;">
+    <input type="text" name="search" value="{{ search_query }}" placeholder="Search by Book Title or Username ">
+    <input type="submit" value="Search">
+</form>
+
+{% if message %}
+    <div class="alert">{{ message }}</div>
+{% endif %}
+
+<table>
+    <thead>
+        <tr>
+            <th>Borrow ID</th>
+            <th>Book Title</th>
+            <th>Book ID</th>
+            <th>Category</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Borrow Date</th>
+            <th>Return Date</th>
+            <th>Instructions</th>
+            <th>Last Edited Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for borrow in borrows %}
+        <tr>
+            <td>{{ borrow.id }}</td>
+            <td>{{ borrow.book_title }}</td>
+            <td>{{ borrow.book_id }}</td>
+            <td>{{ borrow.category }}</td>
+            <td>{{ borrow.username|default('Not set') }}</td>
+            <td>{{ borrow.email|default('Not set') }}</td>
+            <td>{{ borrow.borrow_date }}</td>
+            <td>{{ borrow.return_date }}</td>
+            <td>{{ borrow.instructions }}</td>
+            <td>{{ borrow.update_time }}</td>
+            <td>
+                
+                <a href="{{ url_for('edit_borrow', id=borrow.id) }}">Edit</a>
+                <form action="{{ url_for('delete_borrow', id=borrow.id) }}" method="post" class="delete-form" style="display:inline;">
+                    
+                        <input type="submit" value="Delete" class="delete-button" onclick="return confirm('Are you sure you want to delete this book borrowing information?')">
+                    
+                </form>
+                
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}
