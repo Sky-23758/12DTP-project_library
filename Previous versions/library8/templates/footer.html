@@ -1,0 +1,16 @@
+<footer>
+    <p>&copy; 2025 My Library System</p>
+    <p>Contact: <a href="mailto:contact@mylibrary.com">contact@mylibrary.com</a></p>
+    <p>
+        <a href="/">Home</a> |
+        <a href="/about">About</a> |
+        <a href="/borrow">Borrow</a> |
+        <a href="/borrowList">List</a> |
+
+        {% if current_user.is_authenticated %}
+        <a href="/logout">Logout</a>
+        {% else %}
+        <a href="/login">Login</a>
+        {% endif %}
+    </p>
+</footer>
